@@ -1,24 +1,18 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
-import HomePage from "@/components/home-page";
 import RegisterUser from "@/components/register-user";
 import AuthenticateUser from "@/components/authenticate-user";
 
 const routes = [
     {
         path: '/',
-        name: 'Home',
-        component: HomePage
+        name: 'AuthenticateUser',
+        component: AuthenticateUser
     },
     {
         path: '/register',
         name: 'RegisterUser',
         component: RegisterUser
-    },
-    {
-        path: '/authenticate',
-        name: 'AuthenticateUser',
-        component: AuthenticateUser
     }
 ];
 

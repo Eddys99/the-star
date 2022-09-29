@@ -4,7 +4,7 @@
             <nav>
                 <ul>
                     <li>
-                        <router-link to="/authenticate"> Login </router-link>
+                        <router-link to="/"> Login </router-link>
                     </li>
                     <li>
                         <router-link to="/register"> Register </router-link>

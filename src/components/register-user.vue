@@ -1,44 +1,50 @@
 <template>
     <div id = "register">
-        <h1> Register </h1>
         <div class = "form-content">
+            <h1> Register </h1>
             <label> Username </label>
-            <input type = "text" name = "username" placeholder = "Username" v-model ="register.username">
+            <input type = "text" name = "username" placeholder = "Username" v-model ="payload.username">
             <label> Email </label>
-            <input type = "text" name = "email" placeholder = "Email" v-model ="register.email">
+            <input type = "text" name = "email" placeholder = "Email" v-model ="payload.email">
             <label> Password </label>
-            <input type = "password" name = "password" placeholder = "Password" v-model ="register.password">
+            <input type = "password" name = "password" placeholder = "Password" v-model ="payload.password">
             <label> Confirm password </label>
-            <input type = "password" name = "password2" placeholder = "Confirm password" v-model ="register.password2">
-            <button @click = "registerUser(register)" class = "btn"> Register </button>
+            <input type = "password" name = "password2" placeholder = "Confirm password" v-model ="payload.password2">
+            <button @click = "registerUser(payload)" class = "btn"> Register </button>
         </div>
     </div>
 </template>
 
 <script>
-    export default {
-        name: 'register-user',
+export default {
+    name: 'register-user',
 
-        data() {
-            return {
-                register: {
-                    username: '',
-                    email: '',
-                    password: '',
-                    password2: ''
-                }
-            }
-        },
-
-        methods: {
-            registerUser (payload) {
-                console.log(payload);
+    data: function() {
+        return {
+            payload: {
+                username: '',
+                email: '',
+                password: '',
+                password2: ''
             }
         }
+    },
+
+    methods: {
+        registerUser (payload) {
+            console.log(payload);
+        }
     }
+}
+
 </script>
 
 <style scoped>
+h1 {
+    margin-bottom: 25px;
+    text-align: center;
+}
+
 #register {
     color: white;
     padding: 0 250px 0 250px;
@@ -76,7 +82,7 @@ input {
 
 .form-content {
     background-color: #3a3a3a;
-    padding: 50px;
+    padding: 15px 50px 25px 50px;
     border-radius: 25px;
 }
 
