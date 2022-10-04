@@ -16,23 +16,42 @@
 </template>
 
 <script>
+import axios from "axios";
+import router from "@/router";
+
 export default {
     name: 'register-user',
 
     data: function() {
         return {
             payload: {
-                username: '',
-                email: '',
-                password: '',
-                password2: ''
+                username: null,
+                email: null,
+                password: null,
+                password2: null
             }
         }
     },
 
     methods: {
         registerUser (payload) {
-            console.log(payload);
+            return axios({
+                method: 'POST',
+                url: `http://localhost:3035/user/register`,
+                data: payload,
+                headers: {
+                    'cache-control': 'no-cache',
+                    'content-type': 'application/json'
+                }
+            })
+                .then(response => {
+                    console.log("User authenticated: ", { response });
+                    return router.push('/');
+                })
+                .catch(error => {
+                    console.error("User failed to authenticate: ", { error });
+                    return router.push('/login');
+                });
         }
     }
 }
