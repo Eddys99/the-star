@@ -5,7 +5,7 @@ import AuthenticateUser from "@/components/authenticate-user";
 
 const routes = [
     {
-        path: '/',
+        path: '/auth',
         name: 'AuthenticateUser',
         component: AuthenticateUser
     },
