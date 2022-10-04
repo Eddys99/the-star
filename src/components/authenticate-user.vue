@@ -2,8 +2,8 @@
     <div id = "auth">
         <div class = "form-content">
             <h1> Authenticate </h1>
-            <label> Email </label>
-            <input type = "text" name = "email" placeholder = "Email" v-model ="payload.email">
+            <label> Username </label>
+            <input type = "text" name = "username" placeholder = "Username" v-model ="payload.username">
             <label> Password </label>
             <input type = "password" name = "password" placeholder = "Password" v-model ="payload.password">
             <button @click = "authenticateUser(payload)" class = "btn"> Login </button>
@@ -12,21 +12,41 @@
 </template>
 
 <script>
+import axios from 'axios';
+import router from "@/router";
+
 export default {
     name: 'authenticate-user',
 
     data: function() {
         return {
             payload: {
-                email: null,
+                username: null,
                 password: null
             }
         }
     },
     methods: {
         authenticateUser(payload) {
-            console.log(payload);
-        }
+            return axios({
+                method: 'POST',
+                url: `http://localhost:3035/user/authenticate`,
+                data: payload,
+                headers: {
+                    'cache-control': 'no-cache',
+                    'content-type': 'application/json'
+                }
+            })
+            .then(response => {
+                console.log("User authenticated: ", { response });
+                return router.push('/');
+
+            })
+            .catch(error => {
+                console.error("User failed to authenticate: ", { error });
+                return router.push('/login');
+            });
+        },
     }
 }
 
