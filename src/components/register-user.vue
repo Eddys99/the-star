@@ -44,14 +44,14 @@ export default {
                     'content-type': 'application/json'
                 }
             })
-                .then(response => {
-                    console.log("User authenticated: ", { response });
-                    return router.push('/');
-                })
-                .catch(error => {
-                    console.error("User failed to authenticate: ", { error });
-                    return router.push('/login');
-                });
+            .then(response => {
+                console.log("User authenticated: ", { response });
+                return router.push('/');
+            })
+            .catch(error => {
+                console.error("User failed to authenticate: ", { error });
+                return router.push('/login');
+            });
         }
     }
 }
