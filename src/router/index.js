@@ -2,8 +2,14 @@ import { createRouter, createWebHistory } from 'vue-router';
 
 import RegisterUser from "@/components/register-user";
 import AuthenticateUser from "@/components/authenticate-user";
+import HomePage from "@/components/home-page";
 
 const routes = [
+    {
+        path: '/',
+        name: 'HomePage',
+        component: HomePage
+    },
     {
         path: '/auth',
         name: 'AuthenticateUser',
